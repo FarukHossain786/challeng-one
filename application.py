@@ -2,17 +2,19 @@
 # python version 3.7
 
 from flask import Flask, render_template, request
-import logging
+from flask_cors import CORS,cross_origin
 from challenge.Pdfcreater import Pdfcreater
 from challenge.Check import Database
 from challenge import Dbconnection
 import os
+import logging
 logging.basicConfig(filename='log/app.log', filemode='w',level=logging.INFO)
 
-application = Flask(__name__)
+application = Flask(__name__) # initializing a flask app
 app=application
 
 @app.route('/')
+@cross_origin()
 def home():
     if request.method == 'GET':
         connection = Dbconnection.DB()
@@ -23,12 +25,14 @@ def home():
         return render_template("home.html",result = course, path=path)
 
 @app.route('/grabe-all')
+@cross_origin()
 def graball():
     grabcat = Pdfcreater()
     grabcat.grab_category()
     return "Nothig"
 
 @app.route('/create-table')
+@cross_origin()
 def create_database():
     create = Database()
     create.create_table()
