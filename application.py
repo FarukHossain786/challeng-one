@@ -28,7 +28,7 @@ def graball():
     grabcat.grab_category()
     return "Nothig"
 
-@app.route('/create-database')
+@app.route('/create-table')
 def create_database():
     create = Database()
     create.create_table()
