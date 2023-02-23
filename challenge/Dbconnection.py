@@ -8,10 +8,10 @@ class DB():
     def __init__(self):
         try:
             mydb = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                password="password",
-                database="ineuron"
+                host="inuron.c6nc2dyhcuvl.ap-south-1.rds.amazonaws.com",
+                user="admin",
+                password="qwertyuiop",
+                database="inuron"
             )
 
             self.mydb = mydb
@@ -77,3 +77,5 @@ class DB():
         except:
             logging.info('Table already exist sub_curriculum')
             
+# db = DB()
+# print(db)
